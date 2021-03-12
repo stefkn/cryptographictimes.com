@@ -37,7 +37,8 @@ class MainComponent extends React.Component {
             return (y0, y1) => f((y1 - y0) / y0);
           }
         const parseDate = d3.utcParse("%Y-%m-%d");
-        const data = [
+
+        var data = [
             {date: '2017-11-17', high: 171.389999, low: 169.639999, open: 171.039993, close: 170.149994},
             {date: '2017-11-20', high: 170.559998, low: 169.559998, open: 170.289993, close: 169.979996},
             {date: '2017-11-21', high: 173.699997, low: 170.779999, open: 170.779999, close: 173.139999},
@@ -67,7 +68,20 @@ class MainComponent extends React.Component {
             {date: '2017-12-27', high: 170.779999, low: 169.710007, open: 170.100006, close: 170.600006},
             {date: '2017-12-28', high: 171.850006, low: 170.479996, open: 171, close: 171.080002},
             {date: '2017-12-29', high: 170.589996, low: 169.220001, open: 170.520004, close: 169.229996},
-            {date: '2018-01-02', high: 172.300003, low: 169.259995, open: 170.160004, close: 172.259995}]
+            {date: '2018-01-02', high: 172.300003, low: 169.259995, open: 170.160004, close: 172.259995}
+        ]
+
+        data = data.map((d) => {
+            const date = parseDate(d["date"]);
+            return {
+                date,
+                high: +d["high"],
+                low: +d["low"],
+                open: +d["open"],
+                close: +d["close"]
+            };
+        })
+
         const width = 600;
         const height = 600;
 

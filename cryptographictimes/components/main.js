@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import * as d3 from "d3";
 
-
 const fetcher = async (url) => {
     const res = await fetch(url)
     const data = await res.json()
@@ -20,17 +19,13 @@ class MainComponent extends React.Component {
 
     componentDidMount() {
         var that = this;
-        d3.select("main").append("span").text("Hello, d3!");
-
 
         let promise = fetcher(`/api/bitcoin`);
 
         promise.then(function(data){
             console.log(data);
             that.setState({apiResult: data.status})
-            // console.log(that.renderChart(data.data.Data));
-            document.body.appendChild(that.renderChart(data.data.Data))
-            // d3.select("main").append(that.renderChart(data.data.Data));
+            document.getElementById('main-chart').appendChild(that.renderChart(data.data.Data))
         })
     }
 

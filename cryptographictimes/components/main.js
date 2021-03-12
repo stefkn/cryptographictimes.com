@@ -156,8 +156,12 @@ class MainComponent extends React.Component {
         return svg.node();
     }
 
+
     render() {
-      return <h1>Hello, {this.props.name} - API Returned: {this.state.apiResult}</h1>;
+      return <div>
+            <h1>Hello, {this.props.name} - API Returned: {this.state.apiResult}</h1>
+            <div id="main-chart"></div>
+        </div>;
     }
   }
 

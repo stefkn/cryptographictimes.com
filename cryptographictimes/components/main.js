@@ -132,7 +132,7 @@ class MainComponent extends React.Component {
             .selectAll("g")
             .data(data)
             .join("g")
-            .attr("transform", d => `translate(1,0)`);
+            .attr("transform", d => `translate(${x(d.date)},0)`);
 
         g.append("line")
             .attr("y1", d => y(d.low))
